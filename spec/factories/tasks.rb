@@ -6,5 +6,10 @@ FactoryBot.define do
     to   = Date.parse("2019/12/31")
     deadline { Random.rand(from..to) }
     project
+
+    trait :done_yesterday do
+      status { :done }
+      completion_date { Time.current.yesterday }
+    end
   end
 end
