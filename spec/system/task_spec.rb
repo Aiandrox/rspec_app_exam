@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Task', type: :system do
   let(:project) { create(:project) }
-  let!(:task) { create(:task, project: project) }
+  let(:task) { create(:task, project: project) }
 
   describe 'Task一覧' do
     context '正常系' do
@@ -86,6 +86,7 @@ RSpec.describe 'Task', type: :system do
 
   describe 'Task削除' do
     context '正常系' do
+      let!(:task) { create(:task) }
       it 'Taskが削除されること' do
         visit project_tasks_path(project)
         click_link 'Destroy'
